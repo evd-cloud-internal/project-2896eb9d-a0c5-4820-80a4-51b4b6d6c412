@@ -8,9 +8,32 @@ type: page
 
 This is your new project's homepage. Edit this file to get started.
 
-'''
-select County_Name, Count(*)
-from mping
-group by County_Name
+```cnt_by_cnty
+SELECT County_Name, Count(*) as Cnt
+FROM mping
+GROUP BY County_Name
 ORDER BY County_Name
-'''
+```
+
+{% table
+  data="mping"
+%}
+{% /table %}
+
+{% table
+  data="cnt_by_cnty"
+%}
+{% /table %}
+
+
+{% bar_chart
+  data="cnt_by_cnty"
+  x="County_Name"
+  y="Cnt"
+/%}
+
+{% bar_chart
+  data="mping"
+  x="County_Name"
+  y="count(*)"
+/%}
